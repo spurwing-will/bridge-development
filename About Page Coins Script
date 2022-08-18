@@ -1,0 +1,44 @@
+<script>
+  const slotCoinFirst = document.getElementById("slots-coin-1");
+  const slotCoinSecond = document.getElementById("slots-coin-2");
+  const slotCoinThird = document.getElementById("slots-coin-3");
+  const slotCoinFourth = document.getElementById("slots-coin-4");
+ 	let slotCoinFirstReady = false;
+ 	let slotCoinSecondReady = false;
+ 	let slotCoinThirdReady = false;
+ 	let slotCoinFourthReady = false;
+  
+  slotCoinFirst.addEventListener('loadedmetadata', function() {
+  	slotCoinFirstReady = true;
+  }
+  
+  slotCoinSecond.addEventListener('loadedmetadata', function() {
+    slotCoinSecondReady = true;
+  }
+  
+  slotCoinThird.addEventListener('loadedmetadata', function() {
+  	slotCoinThirdReady = true;
+  }
+  
+  slotCoinFourth.addEventListener('loadedmetadata', function() {
+  	slotCoinFourthReady = true;
+  }
+  
+  const slotCoinIfReadyAndPlay = setInterval(() => {
+  	if (slotCoinFirstReady && slotCoinSecondReady && slotCoinThirdReady && slotCoinFourthReady) {
+    	setTimeout(function() {
+        slotCoinFirst.play();
+      }, 0);
+      setTimeout(function() {
+        slotCoinSecond.play();
+      }, 300);
+      setTimeout(function() {
+        slotCoinThird.play();
+      }, 600);
+      setTimeout(function() {
+        slotCoinFourth.play();
+      }, 900);
+      clearInterval(slotCoinIfReadyAndPlay);
+    }
+  }, 300);
+</script>

@@ -8,19 +8,19 @@
  	let slotCoinThirdReady = false;
  	let slotCoinFourthReady = false;
   
-  slotCoinFirst.addEventListener('loadedmetadata', function() {
+  slotCoinFirst.oncanplay = function() {
   	slotCoinFirstReady = true;
   }
   
-  slotCoinSecond.addEventListener('loadedmetadata', function() {
+  slotCoinSecond.oncanplay = function() {
     slotCoinSecondReady = true;
   }
   
-  slotCoinThird.addEventListener('loadedmetadata', function() {
+  slotCoinThird.oncanplay = function() {
   	slotCoinThirdReady = true;
   }
   
-  slotCoinFourth.addEventListener('loadedmetadata', function() {
+  slotCoinFourth.oncanplay = function() {
   	slotCoinFourthReady = true;
   }
   
@@ -41,4 +41,30 @@
       clearInterval(slotCoinIfReadyAndPlay);
     }
   }, 300);
+  
+  
+  const heroCoinFirst = document.getElementById("hero-coin-1");
+  const heroCoinSecond = document.getElementById("hero-coin-2");
+ 	let heroCoinFirstReady = false;
+ 	let heroCoinSecondReady = false;
+  
+  heroCoinFirst.oncanplay = function() {
+  	heroCoinFirstReady = true;
+  }
+  
+  heroCoinSecond.oncanplay = function() {
+    heroCoinSecondReady = true;
+  }
+  
+  const heroIfReadyAndPlay = setInterval(() => {
+  	if (heroCoinFirstReady && heroCoinSecondReady) {
+    	setTimeout(function() {
+        heroCoinFirst.play();
+      }, 0);
+      setTimeout(function() {
+        heroCoinSecond.play();
+      }, 500);
+      clearInterval(heroIfReadyAndPlay);
+    }
+  }, 0);
 </script>
